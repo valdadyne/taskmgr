@@ -4,3 +4,16 @@
     box-shadow: 2px 2px 2px 2px #3a4a4d;
     height:75vh;
 }
+.TaskList{
+    margin:5px 0;
+    padding-right:1em;
+    height:75vh;
+    overflow-y: scroll;
+}
+.TaskList .button{
+    background: var(--lavender);
+    font-weight: bolder;
+}
+.TaskList .button:hover{
+    background: #f9f9f9;
+}
