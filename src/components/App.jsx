@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect} from 'react-redux';
 import { firebaseApp} from '../firebase';
 
-import {Navbar, Nav, NavItem, Grid, Row, Col, ButtonToolbar, ButtonGroup, Button} from 'react-bootstrap';
+import {Navbar, Nav, NavItem, Grid, Row, Col} from 'react-bootstrap';
 import AddTask from './AddTask';
+import TaskList from './TaskList';
 
 class App extends Component {
   signOut(){
@@ -27,13 +28,7 @@ class App extends Component {
         <Grid>
             <Row className="show-grid">
               <Col xs={12} md={8}>
-                <ButtonToolbar>
-                  <ButtonGroup>
-                    <Button>Open Tasks</Button>
-                    <Button>Completed Tasks</Button>
-                    <Button>Past Due Tasks</Button>
-                  </ButtonGroup>
-                </ButtonToolbar>
+              <TaskList />
               </Col>
               <Col xs={6} md={4}>
                 <AddTask />
