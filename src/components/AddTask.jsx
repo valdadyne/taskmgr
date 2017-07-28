@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { taskRef } from '../firebase';
 
 import {Form, FormGroup, ControlLabel, FormControl, Radio, Button} from 'react-bootstrap';
-import '../static/addtask.css';
+import '../static/app.css';
 
 class AddTask extends Component{
     constructor(props) {
