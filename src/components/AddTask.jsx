@@ -37,7 +37,9 @@ class AddTask extends Component{
                         <Radio inline name="Priority">5</Radio>{' '}
                     </FormGroup>
                     <FormGroup>
-                        <Button className="btn btn-success btn-md pull-right" type="submit">AddTask</Button>
+                        <Button bsStyle="success" bsSize="medium" className="pull-right" type="submit">
+                            AddTask
+                        </Button>
                     </FormGroup>
                 </Form>
             </div>        
