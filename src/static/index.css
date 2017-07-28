@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Acme|Crimson+Text|Lobster+Two');
+
+* {
+  padding: 0;
+  margin:0;
+  font-size: 100%;
+}
+
+body{
+
+  /*Color Pallete*/
+
+  --darkred:#af0000;
+  --orangered:#d52f00;
+  --coral:#fe765d;
+  --lavender:#e7f2f7;
+  --lightsteelblue:#a3c8d9;
+  --darkcyan:#01a279;
+}
+
+.wrapper{
+  width:100vw;
+  height:100vh;
+}
+
+.index .btn-default:hover{
+  background:#e26058;
+  color:var(--lavender);
+  font-weight: bold;
+}
+.btn-default .Link{
+  color:#444;
+}
+.btn-default:hover .Link{
+ color:var(--lavender);
+ font-weight: bold;
+}
+
+
+/* SignIn/SignUp */
+.index{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: 150px 1fr 150px;
+}
+
+.index aside{
+  grid-column: 1/2;
+  grid-row: 1/4;
+  background: var(--lightsteelblue);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  justify-items: center;
+}
+
+.index aside>.brand{
+  grid-column: 1/2;
+  grid-row: 2/3;
+  font-family: 'Crimson Text', serif;
+}
+
+.index form{
+  grid-column: 2/3;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-rows: repeat(4,1fr);
+  grid-template-columns: 1fr 2fr 1fr;
+  padding:2em 0;
+}
+.index form>div.form-group{
+  grid-column: 2/3;
+  grid-row:auto;
+  justify-items: center;
+}

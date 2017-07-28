@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import {Navbar, Nav, NavItem, Grid, Row, Col, ButtonToolbar, ButtonGroup, Button} from 'react-bootstrap';
+import { connect} from 'react-redux';
+import { firebaseApp} from '../firebase';
 
+import {Navbar, Nav, NavItem, Grid, Row, Col, ButtonToolbar, ButtonGroup, Button} from 'react-bootstrap';
 import AddTask from './AddTask';
 
 class App extends Component {
+  signOut(){
+    firebaseApp.auth().signOut();
+  }
   render() {
     return (
       <div className="App">
@@ -15,7 +20,7 @@ class App extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavItem eventKey={1} href="/">SignOut</NavItem>
+              <NavItem className="btn-link" onClick={() =>this.signOut()}>SignOut</NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -39,5 +44,9 @@ class App extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+    // console.log('state', state);
+    return{}
+}
 
-export default App;
+export default connect(mapStateToProps,null)(App);
