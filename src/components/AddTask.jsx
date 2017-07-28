@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Form, FormGroup, ControlLabel, FormControl, Checkbox, Button} from 'react-bootstrap';
+import {Form, FormGroup, ControlLabel, FormControl, Radio, Button} from 'react-bootstrap';
 
 import '../static/addtask.css';
 
@@ -30,11 +30,11 @@ class AddTask extends Component{
                     </FormGroup>
                     <ControlLabel>Priority</ControlLabel>
                     <FormGroup>                        
-                        <Checkbox inline>1</Checkbox>{' '}
-                        <Checkbox inline>2</Checkbox>{' '}
-                        <Checkbox inline>3</Checkbox>{' '}
-                        <Checkbox inline>4</Checkbox>{' '}
-                        <Checkbox inline>5</Checkbox>{' '}
+                        <Radio inline name="Priority">1</Radio>{' '}
+                        <Radio inline name="Priority">2</Radio>{' '}
+                        <Radio inline name="Priority">3</Radio>{' '}
+                        <Radio inline name="Priority">4</Radio>{' '}
+                        <Radio inline name="Priority">5</Radio>{' '}
                     </FormGroup>
                     <FormGroup>
                         <Button className="btn btn-success btn-md pull-right" type="submit">AddTask</Button>
