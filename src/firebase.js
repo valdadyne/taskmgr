@@ -12,3 +12,4 @@ import * as firebase from 'firebase';
   export const firebaseApp = firebase.initializeApp(config);
   export const taskRef = firebase.database().ref('tasks');
   export const SubRef = firebase.database().ref('subtasks');
+  export const completedTaskRef = firebase.database().ref('completedtasks');

@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
+import { connect} from 'react-redux';
+import { completedTaskRef, taskRef} from '../firebase';
 
 import '../static/taskItem.css';
 
 class TaskItem extends Component{
+    completeTask(){
+        const {email} = this.props.user;
+        const{serverKey,taskname,assigned,assigned_reliever, start_date, due_date, priority} = this.props.task;
+        taskRef.child(serverKey).remove();
+        completedTaskRef.push({'completer': email,taskname,assigned,assigned_reliever, start_date, due_date, priority})
+
+    }
+    deleteTask(){
+        taskRef.set([]);
+    }
     render(){
-        console.log ('this.props.task', this.props.task);
-         const{taskname,assigned,assigned_reliever, start_date, due_date, priority} =this.props.task;
+        const{taskname,assigned,assigned_reliever, start_date, due_date, priority} =this.props.task;
         return(
             <div className="task-wrapper">
                 <div className="task-header">
@@ -19,12 +30,32 @@ class TaskItem extends Component{
                     <div><label>Due:</label>&nbsp;{due_date}</div>
                 </div>
                 <div className="task-toolbox">
-                    <div><a className=" btn task-icons"><i className="material-icons">mode_edit</i></a>Edit</div>
-                    <div><a className=" btn task-icons"><i className="material-icons">done</i></a> Mark Done</div>
-                    <div><a className=" btn task-icons"><i className="material-icons">delete_sweep</i></a>delete</div>
+                    <div>
+                        <a className=" btn task-icons">
+                            <i className="material-icons">mode_edit</i>
+                        </a>Edit
+                    </div>
+                    <div>
+                        <a className=" btn task-icons"
+                            onClick={() => this.completeTask()}>
+                            <i className="material-icons">done</i>
+                        </a> Mark Done
+                    </div>
+                    <div>
+                        <a className=" btn task-icons"
+                            onClick={() => this.deleteTask()}>
+                            <i className="material-icons">delete_sweep</i>
+                        </a>delete
+                    </div>
                 </div>
             </div>
         ); 
     }
 }
-export default TaskItem;
+function mapStateToProps(state){
+    const {user} = state;
+    return{
+        user
+    }
+}
+export default connect(mapStateToProps,null)(TaskItem);
