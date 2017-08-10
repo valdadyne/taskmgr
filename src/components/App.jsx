@@ -16,7 +16,7 @@ class App extends Component {
         <nav className="navbar">
           <ul className="nav navbar-nav navbar-right">
             <li><a href="/"><i className="material-icons">supervisor_account</i>Admin</a></li>
-            <li><a href="/"><i className="material-icons">person_outline</i>SignOut</a></li>
+            <li><a href="/"><i className="material-icons">person</i>SignOut</a></li>
           </ul>
           <a className="navbar-brand" href="/">WholeLife</a>
         </nav>
@@ -32,8 +32,6 @@ class App extends Component {
           <div className ="clearfix"></div>
           <section className="tab-content">
             <div id="activeTasks" className="tab-pane fade in active">
-              <div className="taskList"></div>
-              <div className="taskDetails"></div>
             </div>
             <div id="completedTasks" className="tab-pane fade">completed</div>
             <div id="dueTasks" className="tab-pane fade">due</div>
