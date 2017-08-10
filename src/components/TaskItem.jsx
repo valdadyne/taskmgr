@@ -16,12 +16,39 @@ class TaskItem extends Component{
         taskRef.set([]);
     }
     render(){
-        const{taskname} =this.props.task;
+        const{taskname,assigned,assigned_reliever, start_date, due_date, priority} =this.props.task;
         return(
-            <li class="item">
-                <div class="chk-circle"></div>
-                <span class="itemField">{taskname}</span>
-            </li>
+            <div className="task-wrapper">
+                <div className="task-header">
+                   <div><h4 className="text-default">{taskname}</h4></div>
+                   <div><h1 className="text-danger">{priority}</h1></div>
+                </div>
+                <div className="task-content">
+                    <div><label>Assigned :</label>&nbsp;{assigned}</div>
+                    <div><label>Assigned Reliever :</label>&nbsp;{assigned_reliever}</div>
+                    <div><label>Started:</label>&nbsp;{start_date}</div>
+                    <div><label>Due:</label>&nbsp;{due_date}</div>
+                </div>
+                <div className="task-toolbox">
+                    <div>
+                        <a className=" btn task-icons">
+                            <i className="material-icons">mode_edit</i>
+                        </a>Edit
+                    </div>
+                    <div>
+                        <a className=" btn task-icons"
+                            onClick={() => this.completeTask()}>
+                            <i className="material-icons">done</i>
+                        </a> Mark Done
+                    </div>
+                    <div>
+                        <a className=" btn task-icons"
+                            onClick={() => this.deleteTask()}>
+                            <i className="material-icons">delete_sweep</i>
+                        </a>delete
+                    </div>
+                </div>
+            </div>
         ); 
     }
 }

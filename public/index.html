@@ -17,5 +17,12 @@
     <!-- scripts -->
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      // Add a "checked" symbol when clicking on a list item
+      var selector = '.item';
+      $(selector).on('click', function(){
+          $(this).toggleClass('checked');
+      });
+    </script>
   </body>
 </html>

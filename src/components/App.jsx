@@ -22,7 +22,9 @@ class App extends Component {
           <a className="navbar-brand" href="/">WholeLife</a>
         </nav>
         <main>
-          <button className=" pull-left btn btn-primary">AddTask</button>
+          <button className=" pull-left btn btn-primary" data-toggle="modal" data-target="#AddTask">
+            AddTask
+          </button>
           <div className="submenu col-md-offset-3 col-md-6">
             <ul className="nav nav-tabs nav-justified">
               <li className="active"><a data-toggle="tab" href="#activeTasks">Active Tasks</a></li>
@@ -42,6 +44,20 @@ class App extends Component {
             <div id="Reports" className="tab-pane fade">Reports</div>
           </section>
         </main>
+        <div id="AddTask" className="modal fade">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button type="button" className="close" data-dismiss="modal">&times;</button>
+              <h4 className="modal-title">Add New Task</h4>
+            </div>
+            <div className="modal-body">
+              <AddTask />
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
        </div>
     );
   }

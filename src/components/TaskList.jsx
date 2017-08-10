@@ -3,10 +3,10 @@ import { connect} from 'react-redux';
 import { taskRef} from '../firebase';
 import { setTasks } from '../actions';
 
-import TaskItem from './TaskItem';
 import '../static/task.css';
 
 class TaskList extends Component{
+    task="";
     componentDidMount(){
         taskRef.on('value', snap =>{
             let tasks =[];
@@ -21,20 +21,18 @@ class TaskList extends Component{
     render(){
         return(
             <div className="taskList">
-                {
-                    this.props.tasks.map((task, index) =>{
-                        return(
-                            <div>
-                                <h6 class="subheading">Active Tasks</h6>
-                                    <ul id="myUL">
-                                        <TaskItem key={index} task={task} />
-                                    </ul>
-                            </div>
-                        )                        
-                    })
-                }
-                <hr/>
-                
+                <ul id="myUL">
+                    {
+                        this.props.tasks.map((task, index) =>{
+                            return(
+                                <li className="item" key={index}>
+                                    <div className="chk-circle"></div>
+                                    <span className="itemField">{task.taskname}</span>
+                                </li>
+                            )                        
+                        })
+                    }
+                </ul>                
             </div>
         );
     }
