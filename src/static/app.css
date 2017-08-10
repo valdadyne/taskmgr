@@ -1,22 +1,33 @@
-.AddTask Form{
-    margin:5px;
-    padding: 10px;
-    box-shadow: 2px 2px 2px 2px #3a4a4d;
-    height:75vh;
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
 }
-.TaskList, .CompletedList{
-    margin:5px 0;
-    padding-right:1em;
-    height:75vh;
-    overflow-y: scroll;
+.app-wrapper{
+  width:100vw;
+  padding:0 20px;
 }
-.TaskList .button{
-    background: var(--lavender);
+
+.material-icons{
+    padding:0 5px;
+    margin:inherit;
+    font-size:inherit;
+}
+/* navigation */
+nav.navbar{
+    position: relative;
+    border-bottom: 0.1em solid #626565;
+    height:7vh;
+}
+.navbar .navbar-brand{
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;
+    display: block;
+    text-align: center;
+    font-size: 26px;
+}
+.navbar a{
+    font-size: 16px;
     font-weight: bolder;
-}
-.TaskList .button:hover{
-    background: #f9f9f9;
-}
-h4.subtitle{
-    margin:1em 0;
 }
