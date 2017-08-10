@@ -13,10 +13,11 @@
     margin:inherit;
     font-size:inherit;
 }
+
 /* navigation */
 nav.navbar{
     position: relative;
-    border-bottom: 0.1em solid #626565;
+    border-bottom: 0.1em solid #eee;
     height:7vh;
 }
 .navbar .navbar-brand{
@@ -30,4 +31,14 @@ nav.navbar{
 .navbar a{
     font-size: 16px;
     font-weight: bolder;
+}
+
+/* ActiveTasks Tab*/
+
+section #activeTasks{
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  grid-auto-rows: 1fr;
+  grid-column-gap: 10px;
 }

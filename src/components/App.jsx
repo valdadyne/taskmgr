@@ -20,6 +20,26 @@ class App extends Component {
           </ul>
           <a className="navbar-brand" href="/">WholeLife</a>
         </nav>
+        <main>
+          <div className="submenu col-md-offset-3 col-md-6">
+            <ul className="nav nav-tabs nav-justified">
+              <li className="active"><a data-toggle="tab" href="#activeTasks">Active Tasks</a></li>
+              <li><a data-toggle="tab" href="#completedTasks">Completed Tasks</a></li>
+              <li><a data-toggle="tab" href="#dueTasks">Past Due Tasks</a></li>
+              <li><a data-toggle="tab" href="#Reports">Reports</a></li>
+            </ul>
+          </div>
+          <div className ="clearfix"></div>
+          <section className="tab-content">
+            <div id="activeTasks" className="tab-pane fade in active">
+              <div className="taskList"></div>
+              <div className="taskDetails"></div>
+            </div>
+            <div id="completedTasks" className="tab-pane fade">completed</div>
+            <div id="dueTasks" className="tab-pane fade">due</div>
+            <div id="Reports" className="tab-pane fade">Reports</div>
+          </section>
+        </main>
        </div>
     );
   }
