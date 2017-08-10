@@ -4,6 +4,7 @@ import { taskRef} from '../firebase';
 import { setTasks } from '../actions';
 
 import TaskItem from './TaskItem';
+import '../static/task.css';
 
 class TaskList extends Component{
     componentDidMount(){
@@ -19,11 +20,16 @@ class TaskList extends Component{
     }
     render(){
         return(
-            <div className="TaskList">
+            <div className="taskList">
                 {
                     this.props.tasks.map((task, index) =>{
                         return(
-                            <TaskItem key={index} task={task} />
+                            <div>
+                                <h6 class="subheading">Active Tasks</h6>
+                                    <ul id="myUL">
+                                        <TaskItem key={index} task={task} />
+                                    </ul>
+                            </div>
                         )                        
                     })
                 }

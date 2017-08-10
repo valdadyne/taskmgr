@@ -1,0 +1,57 @@
+.taskList ul {
+  margin: 0;
+  padding: 0;
+}
+.taskList ul li {
+  cursor: pointer;
+  position: relative;
+  font-size: 18px;
+  width:400px;
+  height: 3em;
+  margin-bottom: 3em;
+  transition: 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.taskList ul li:hover .itemField {
+    background: #eee;
+}
+.taskList ul li .chk-circle{
+  position: absolute;
+  padding: 0; margin: 0;
+  text-align: center;
+  left: 0;
+  top: 0;
+  height: 3em;
+  width:50px;
+  border-radius: 50%;
+  border: solid #eee;
+}
+.taskList ul li .itemField{
+  position: absolute;
+  top:0;
+  left:55px;
+  height: 3em;
+  width:90%;
+  border: solid #eee;
+  line-height: 2.5em;
+  padding-left:16px;
+}
+.taskList ul li.checked .chk-circle::before{
+  content: '';
+  position: absolute;
+  border-color: red;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 21px;
+  width: 10px;
+}
+.taskList ul li.checked .itemField{
+  color: crimson;
+  text-decoration: line-through;
+}

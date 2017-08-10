@@ -4,6 +4,7 @@ import { firebaseApp} from '../firebase';
 
 import AddTask from './AddTask';
 import TaskList from './TaskList';
+import TaskDetail from './TaskDetail';
 import CompletedTaskList from './CompletedTaskList';
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
           <a className="navbar-brand" href="/">WholeLife</a>
         </nav>
         <main>
+          <button className=" pull-left btn btn-primary">AddTask</button>
           <div className="submenu col-md-offset-3 col-md-6">
             <ul className="nav nav-tabs nav-justified">
               <li className="active"><a data-toggle="tab" href="#activeTasks">Active Tasks</a></li>
@@ -31,7 +33,9 @@ class App extends Component {
           </div>
           <div className ="clearfix"></div>
           <section className="tab-content">
-            <div id="activeTasks" className="tab-pane fade in active">
+            <div id="activeTasks" className="tab-pane fade in active">              
+              <TaskList />
+              <TaskDetail />
             </div>
             <div id="completedTasks" className="tab-pane fade">completed</div>
             <div id="dueTasks" className="tab-pane fade">due</div>

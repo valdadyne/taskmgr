@@ -51,7 +51,7 @@ section #activeTasks{
   border: 0.01em solid #4c4c4c;
 }
 /* TaskDetails  Container*/
-#activeTasks .taskDetails{
+#activeTasks .taskDetail{
   padding: 10px;
   grid-column: 2/3;
   height:75vh;
