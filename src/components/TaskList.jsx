@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import { connect} from 'react-redux';
+// import classnames from 'classnames';
 import { taskRef} from '../firebase';
 import { setTasks } from '../actions';
 
 import '../static/task.css';
 
 class TaskList extends Component{
-    task="";
+    constructor() { 
+        super();
+        this.state = {checked : false};
+    }
+    onChecked() {
+        if (this.state.checked) {
+            this.setState({checked: false});
+        }
+        this.setState({checked: true});
+    }
     componentDidMount(){
         taskRef.on('value', snap =>{
             let tasks =[];
@@ -18,25 +28,30 @@ class TaskList extends Component{
             this.props.setTasks(tasks);
         })
     }
+    
     render(){
-        return(
+        return(            
             <div className="taskList">
                 <ul id="myUL">
                     {
-                        this.props.tasks.map((task, index) =>{
+                        this.props.tasks.map((task, serverKey) =>{
                             return(
-                                <li className="item" key={index}>
-                                    <div className="chk-circle"></div>
-                                    <span className="itemField">{task.taskname}</span>
-                                </li>
+                                <TaskItem key={serverKey} task={task}/>
                             )                        
                         })
-                    }
+                    }                    
                 </ul>                
             </div>
         );
     }
 }
+
+const TaskItem = (props) =>(
+    <li className="item">
+        <div className="chk-circle"></div>
+        <span className="itemField">{props.task.taskname}</span>
+    </li>    
+);
 function mapStateToProps(state){
     const { tasks } = state;
     return{

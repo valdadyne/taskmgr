@@ -5,7 +5,7 @@ import { firebaseApp} from '../firebase';
 import AddTask from './AddTask';
 import TaskList from './TaskList';
 import TaskDetail from './TaskDetail';
-import CompletedTaskList from './CompletedTaskList';
+// import CompletedTaskList from './CompletedTaskList';
 
 class App extends Component {
   signOut(){
