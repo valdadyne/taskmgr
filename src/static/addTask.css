@@ -1,0 +1,18 @@
+.modal-title{
+  font-weight: bolder;
+  font-size: 20px;
+}
+.modal-body .row .col-sm-6:first-of-type{
+    border-right: 0.01em solid #000;
+  }
+  .modal-body .priority div{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: column;
+    grid-gap: 5px;
+    align-self: center;
+  }
+  .modal-body .priority div label{
+    font-weight: normal;
+    justify-self: center;
+  }

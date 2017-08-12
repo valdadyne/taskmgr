@@ -7,6 +7,8 @@ import TaskList from './TaskList';
 import TaskDetail from './TaskDetail';
 // import CompletedTaskList from './CompletedTaskList';
 
+import '../static/app.css';
+
 class App extends Component {
   signOut(){
     firebaseApp.auth().signOut();
@@ -44,21 +46,8 @@ class App extends Component {
             <div id="Reports" className="tab-pane fade">Reports</div>
           </section>
         </main>
-        <div id="AddTask" className="modal fade">
-          <div className="modal-content">
-            <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal">&times;</button>
-              <h4 className="modal-title">Add New Task</h4>
-            </div>
-            <div className="modal-body">
-              <AddTask />
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-       </div>
+        <AddTask />
+      </div>
     );
   }
 }
