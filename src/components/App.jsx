@@ -18,7 +18,7 @@ class App extends Component {
       <div className="app-wrapper">
         <nav className="navbar">
           <ul className="nav navbar-nav navbar-right">
-            <li><a href="/"><i className="material-icons">supervisor_account</i>Admin</a></li>
+            <li className="disabled"><a><i className="material-icons">supervisor_account</i>Admin</a></li>
             <li><a onClick={() => this.signOut()}><i className="material-icons">person</i>SignOut</a></li>
           </ul>
           <a className="navbar-brand" href="/">WholeLife</a>
