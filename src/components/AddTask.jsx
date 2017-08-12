@@ -56,12 +56,12 @@ class AddTask extends Component{
                         <div className="col-sm-6">
                             <div className="form-group">
                                 <label htmlFor="start_date">Start Date</label>
-                                <input className="form-control" type="date" id="start_date"  max= "#due_date" required
+                                <input className="form-control" type="date" name= "starDate" id="start_date" required
                                     onChange={event => this.setState({start_date:event.target.value})} />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="due_date">Due Date</label>
-                                <input className="form-control" type="date" id="due_date" min="#start_date" required
+                                <input className="form-control" type="date" name= "dueDate" id="due_date" required
                                     onChange={event => this.setState({due_date:event.target.value})} />
                             </div>
                             <div className="form-group priority">
