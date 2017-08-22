@@ -1,0 +1,33 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+.app-wrapper{
+    height: calc(100vh - 10px);
+    width: calc(100vw - 10px);
+    margin: 5px;
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;
+    grid-auto-flow: row;
+    justify-items: space-around;
+    grid-row-gap: 5px;
+}
+header {
+    background:#53777a;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-auto-flow: column;
+}
+header .brand{
+    color: #fff;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+main{
+    background: #f7f7f7;
+}
+footer {
+    background:#53777a
+}
