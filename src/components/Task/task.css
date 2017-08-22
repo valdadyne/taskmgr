@@ -9,19 +9,19 @@
 }
 .tasklist-header{
     line-height: 50px;
-    background: lightgrey;
+    border-bottom: 2px solid lightgrey;
 }
 .tasklist-header button{
-    padding:10px;
-    margin: 0 10px;
+    padding:12px;
     background: crimson;
     color:#fff;
     outline: 0;
+    font-weight: bolder;
     border-radius:10px;
 }
 .tasklist-body{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 50px;
     grid-gap: 10px;
 }
