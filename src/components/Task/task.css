@@ -1,3 +1,21 @@
+.AddTask{
+  padding: 10px 0;
+}
+.AddTask label{
+  font-size: 14px;
+}
+.AddTask option{
+  font-weight: bold;
+}
+.AddTask input[type="date"] {
+    background:#fff url(https://cdn0.iconfinder.com/data/icons/twitter-ui-flat/48/Twitter_UI-21-32.png)  97% 50% no-repeat ;
+  }
+.AddTask input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+  }
+.AddTask input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+ }
 .tasklist{
   width:100%;
   height:100%;
@@ -32,6 +50,8 @@
 }
 .tasklist .btn-custom i{
   font-size: 20px;
+  font-weight: bold;
+  pointer-events: none;
 }
 .tasklist main{
   padding:20px;
