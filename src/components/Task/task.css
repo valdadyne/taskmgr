@@ -80,3 +80,14 @@
   color: #53777a;
   font-weight: bold;
 }
+
+/*Task Item*/
+.task{
+  display:grid;
+  padding: 0 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 30px;
+  grid-auto-flow: column;
+  border: 1px solid #53777a;
+  align-items: center;
+}

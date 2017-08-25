@@ -17,8 +17,8 @@ class TaskList extends Component {
       let tasks = [];
       snap.forEach(task => {
         const id = task.key;
-        const {Creator, taskname} = task.val();
-        tasks.push({id, Creator, taskname});
+        const {Creator, taskname,priority} = task.val();
+        tasks.push({id, Creator, taskname,priority});
       })
       this.setState({tasks: tasks});
     })

@@ -6,20 +6,20 @@ import './task.css';
 class Task extends Component{
     constructor(props){
         super(props);
-        this.taskContent = props.taskContent;
+        this.task = props.task;
         this.taskId = props.taskId;
     }
     render(){
         return (
             <div className="task">
-                 <div className="taskContent">{ this.taskContent }</div>
-                 <div className="taskAction"></div>            
+              <span><strong>Task:</strong>&nbsp;{this.task.taskname}</span>
+              <span><strong>Priority:</strong>&nbsp;{this.task.priority}</span>
             </div>
         )
     }
 }
 
 Task.PropTypes ={
-    taskContent:PropTypes.string    
+    task:PropTypes.array,
 }
 export default Task;
