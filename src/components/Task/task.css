@@ -12,12 +12,14 @@
     border-bottom: 2px solid lightgrey;
 }
 .tasklist-header button{
-    padding:12px;
+    padding:5px;
     background: crimson;
     color:#fff;
-    outline: 0;
+    /* outline: 0; */
     font-weight: bolder;
-    border-radius:10px;
+}
+.tasklist-header button:hover,.tasklist-header button:focus{
+    color:#fff;
 }
 .tasklist-body{
     display: grid;
