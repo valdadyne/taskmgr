@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {firebaseApp} from './firebase';
 import { connect } from 'react-redux';
 
-import {AddTask, TaskList} from './components/Task';
+import {TaskList} from './components/Task';
 import './App.css';
 
 class App extends Component {
@@ -22,7 +22,9 @@ class App extends Component {
         <main>
           <TaskList />
         </main>
-        <footer></footer>
+        <footer>
+          <p>Copyright &copy; 2017</p>
+        </footer>
       </div>
     );
   }
