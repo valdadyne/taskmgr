@@ -45,7 +45,7 @@ class AddTask extends Component{
         <div className="form-group">
           <button className="btn btn-success"
             onClick={() => this.addTask()}>
-              AddTask</button>
+              Add Task</button>
         </div>
       </div>
     )
