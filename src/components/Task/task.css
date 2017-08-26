@@ -84,10 +84,20 @@
 /*Task Item*/
 .task{
   display:grid;
-  padding: 0 20px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 30px;
+  padding:0;
+  grid-template-columns:1fr repeat(3, .6fr);
+  grid-auto-rows: 40px;
   grid-auto-flow: column;
   border: 1px solid #53777a;
   align-items: center;
+  cursor: pointer;
+}
+.task span{
+  text-align: center;
+}
+.task span:first-of-type{
+  font-weight: bold;
+  text-align: left;
+  padding-left: 20px;
+  text-transform: uppercase;
 }
