@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {taskRef} from '../../firebase';
+import { setTasks} from '../../actions';
 
 import {AddTask, Task} from './';
 import './task.css';
@@ -8,7 +10,6 @@ class TaskList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [],
       activeComponent: 'allTasks'
     }
   }
@@ -17,10 +18,11 @@ class TaskList extends Component {
       let tasks = [];
       snap.forEach(task => {
         const id = task.key;
-        const {Creator, taskname,priority} = task.val();
-        tasks.push({id, Creator, taskname,priority});
+        const {Creator, taskname,priority,start_date,due_date} = task.val();
+        tasks.push({id, Creator, taskname,priority,start_date,due_date});
       })
-      this.setState({tasks: tasks});
+      // console.log('tasks', tasks);
+      this.props.setTasks(tasks);
     })
   }
   handleClick(e) {
@@ -49,7 +51,7 @@ class TaskList extends Component {
               ? <section>
                 <h4>Active Tasks</h4>
                 {
-                  this.state.tasks.map(task =>{
+                  this.props.tasks.map(task =>{
                     return(
                       <Task key={task.id} task={task}/>)
                     })
@@ -82,4 +84,12 @@ class TaskList extends Component {
     )
   }
 }
-export default TaskList;
+
+function mapStateToProps(state){
+  const { tasks } = state;
+  return {
+    tasks
+  }
+}
+
+export default connect(mapStateToProps,{ setTasks})(TaskList);
