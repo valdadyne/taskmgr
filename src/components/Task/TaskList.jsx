@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {taskRef} from '../../firebase';
 import { setTasks} from '../../actions';
 
-import {AddTask,CompleteTasks, Task} from './';
+import {AddTask,CompleteTaskList, Task} from './';
 import './task.css';
 
 class TaskList extends Component {
@@ -69,7 +69,7 @@ class TaskList extends Component {
             {(this.state.activeComponent === "doneTasks")
               ? <section>
                 <h4>Completed Tasks</h4>
-                <CompleteTasks />
+                <CompleteTaskList />
               </section>
               : null
             }

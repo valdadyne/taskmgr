@@ -1,7 +1,9 @@
 import React, { Component} from 'react';
+import { connect} from 'react-redux';
+import { setCompleted} from '../../actions';
 import { completeTaskRef } from '../../firebase';
 
-class CompleteTasks extends Component {
+class CompleteTaskList extends Component {
   componentDidMount(){
     completeTaskRef.on('value', snap =>{
       let completeTasks =[];
@@ -9,15 +11,27 @@ class CompleteTasks extends Component {
         const {closer, task} = completeTask.val();
         completeTasks.push ({closer, task});
       })
-      console.log('CompleteTasks', completeTasks);
+      this.props.setCompleted(completeTasks);
     })
   }
   render(){
+    console.log('this.props.completeTasks', this.props.completeTasks);
+    const {closer, task} = this.props.completeTasks;
     return (
-      <div className="CompleteTasks"></div>
+      <div className="CompleteTasks">
+
+      </div>
     )
   }
 
 }
 
-export default CompleteTasks;
+function mapStateToProps(state){
+  const { completeTasks} = state;
+  return{
+    completeTasks
+  }
+}
+
+
+export default connect(mapStateToProps,{ setCompleted })(CompleteTaskList);

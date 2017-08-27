@@ -1,11 +1,11 @@
 import AddTask from './AddTask';
-import CompleteTasks from './CompleteTasks';
+import CompleteTaskList from './CompleteTasks';
 import TaskList from './TaskList';
 import Task from './Task';
 
 export {
     AddTask,
-    CompleteTasks,
+    CompleteTaskList,
     Task,
     TaskList
 }
