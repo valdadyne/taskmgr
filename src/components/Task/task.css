@@ -66,6 +66,7 @@
 }
 .taskComponent section{
   margin: 10px 50px;
+  height:inherit;
   display: grid;
   grid-template-rows: 50px 1fr;
   grid-auto-flow: row;
@@ -151,3 +152,44 @@
   }
 
 /* ------------------ */
+.completedList{
+  height: 100%;
+  overflow-y: scroll;
+}
+.completedList{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+}
+.completedItem .clickable{
+    cursor: pointer;
+}
+.completedItem .panel-heading {
+  background: #b87d84;
+  color: #fff;
+  display:grid;
+  grid-template-columns: 2fr 1fr 10px;
+  grid-column-gap: 10px;
+}
+.completedItem .panel-body{
+  clear:both;
+  width:100%;
+  margin:0;
+  padding: 10px;
+}
+table{
+  width:100%;
+}
+tr td.long{
+  word-break:break-word;
+}
+td:first-of-type{
+  font-weight: bold;
+  text-transform: capitalize;
+}
+td {
+    word-wrap: break-word;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
