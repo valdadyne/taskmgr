@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {taskRef} from '../../firebase';
 import { setTasks} from '../../actions';
 
-import {AddTask, Task} from './';
+import {AddTask,CompleteTasks, Task} from './';
 import './task.css';
 
 class TaskList extends Component {
@@ -18,8 +18,8 @@ class TaskList extends Component {
       let tasks = [];
       snap.forEach(task => {
         const id = task.key;
-        const {Creator, taskname,priority,start_date,due_date} = task.val();
-        tasks.push({id, Creator, taskname,priority,start_date,due_date});
+        const {Creator, taskname,description, priority,start_date,due_date} = task.val();
+        tasks.push({id, Creator, description,taskname,priority,start_date,due_date});
       })
       // console.log('tasks', tasks);
       this.props.setTasks(tasks);
@@ -69,6 +69,7 @@ class TaskList extends Component {
             {(this.state.activeComponent === "doneTasks")
               ? <section>
                 <h4>Completed Tasks</h4>
+                <CompleteTasks />
               </section>
               : null
             }
