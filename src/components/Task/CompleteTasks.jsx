@@ -31,40 +31,29 @@ class CompleteTaskList extends Component {
 }
 
 const Task = (props) => {
-  const {closer} = props.completeTask;
+  // const {closer} = props.completeTask;
   const {taskname,description, priority,start_date,due_date, Creator} = props.completeTask.task;
   return(
     <div className="completedItem">
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h3 className="panel-title">
+          <h5 className="panel-title">
             <strong>{taskname}</strong>
-          </h3>
-          <h3 className="panel-title">
+          </h5>
+          <h5 className="panel-title">
             <strong>{moment(due_date).diff(moment(start_date), 'days')} days</strong>
-          </h3>
+          </h5>
           <span className="pull-right clickable">
             <i className="glyphicon glyphicon-chevron-up"></i>
           </span>
         </div>
         <div className="panel-body">
-          <table>
-            <tr>
-              <td>Description</td>
-              <td className="long">{description}</td>
-            </tr>
-            <tr>
-              <td>Priority</td>
-              <td>{priority}</td>
-            </tr>
-            <tr>
-              <td>Start Date</td>
-              <td>{start_date}</td>
-            </tr>
-            <tr>
-              <td>Due Date</td>
-              <td>{due_date}</td>
-            </tr>
+          <table className="table table-fixed">
+            <tr><td>Description</td><td className="long">{description}</td></tr>
+            <tr><td>Created By</td><td>{Creator}</td></tr>
+            <tr><td>Priority</td><td>{priority}</td></tr>
+            <tr><td>Start Date</td><td>{start_date}</td></tr>
+            <tr><td>Due Date</td><td>{due_date}</td></tr>
           </table>
         </div>
       </div>
