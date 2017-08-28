@@ -50,12 +50,14 @@ class TaskList extends Component {
             {(this.state.activeComponent === "allTasks")
               ? <section>
                 <h4>Active Tasks</h4>
-                {
-                  this.props.tasks.map(task =>{
-                    return(
-                      <Task key={task.id} task={task}/>)
-                    })
-                }
+                <div className="activeList">
+                  {
+                    this.props.tasks.map(task =>{
+                      return(
+                        <Task key={task.id} task={task}/>)
+                      })
+                  }
+                </div>
               </section>
               : null
             }
