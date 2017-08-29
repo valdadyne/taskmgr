@@ -10,10 +10,10 @@ import './taskItem.css';
 class Task extends Component{
     constructor() {
       super();
-      this.state = { isModalOpen: false }
-    }
-    editTask(){
-
+      this.state = { 
+        isModalOpen: false,
+        subtasks:[]
+      }
     }
     completeTask(){
       const { email } = this.props.user;
