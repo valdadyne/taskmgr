@@ -13,6 +13,7 @@
   grid-template-rows:20px repeat(2, 1fr);
   grid-row-gap: 20px;
   grid-auto-flow: row;
+  border-radius: 10px;
 }
 .taskItem .due_dates{
   grid-column: 1/2;
@@ -64,22 +65,34 @@
   bottom: 5px;
   padding: 10px;
   background:rgba(83,119,122,0.9);
+  border-radius: 10px;
 }
-.overlay .btn, .overlay .btn:focus{
+.overlay #btn-close, .overlay #btn-close:focus{
   position: absolute;
   top:10px;
   left:10px;
   outline: 0;
-  border-radius: 50%;
+  font-weight: bold;
 }
 .editWrapper{
   background: #fff;
   position: relative;
-  margin:40px;
+  margin:25px;
   padding: 10px;
-  height:calc(100% - 80px);
+  height:calc(100% - 50px);
+  border-radius: 10px;
 }
 .editWrapper form{
   margin:10px;
   height:calc(100% - 20px);
+}
+.subtasks .input-group-addon{
+  background: #43ac6e;
+  font-weight: bolder;
+}
+.subtasks .input-group-addon a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
 }
