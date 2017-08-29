@@ -63,9 +63,10 @@
   top:10px;bottom: 10px;
   border: 2px solid #53777a;
   height:calc(100% - 20px);
+  border-radius: 10px;
 }
 .taskComponent section{
-  margin: 10px 50px;
+  margin: 10px 30px;
   height:inherit;
   display: grid;
   grid-template-rows: 50px 1fr;
