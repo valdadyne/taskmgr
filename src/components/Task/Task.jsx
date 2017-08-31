@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { taskRef, completeTaskRef } from '../../firebase';
+import { taskRef, completeTaskRef, deletedRef } from '../../firebase';
 import moment from 'moment';
 
 import EditTask from './EditTask';
@@ -21,6 +21,12 @@ class Task extends Component{
       taskRef.child(task.id).remove();
       completeTaskRef.push({closer:email,task});
     }
+    deleteTask(){
+      const { email } = this.props.user;
+      const task = this.props.task;
+      taskRef.child(taskId).remove();
+      deletedRef.push({email,task})
+    }
     render(){
       const {taskname,priority,due_date} = this.props.task;
       const task = this.props.task;
@@ -39,7 +45,7 @@ class Task extends Component{
             <div className="button-group">
               <button className="btn btn-info" onClick={() =>this.completeTask()}>Done</button>
               <button className="btn btn-success" onClick={() => this.openModal()}>Edit </button>
-              <button className="btn btn-danger">Delete</button>
+              <button className="btn btn-danger" onClick={() => this.deleteTask()}>Delete</button>
             </div>
           </div>
           <EditTask task={task} isOpen={this.state.isModalOpen} onClose={() => this.closeModal()} />
