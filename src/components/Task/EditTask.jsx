@@ -1,18 +1,21 @@
 import React, {Component} from 'react';
-import { subTaskRef } from '../../firebase';
+import { taskRef , subTaskRef } from '../../firebase';
 
 class EditTask extends Component {
     constructor(props){
       super(props);
       this.state ={
         taskId: '',
-        taskname: '',
-        description:'',
-        priority:'Medium',
-        start_date:'',
-        due_date:'',
+        taskname: this.props.task.taskname,
+        description: this.props.task.description,
+        priority:this.props.task.priority,
+        start_date:this.props.task.start_date,
+        due_date:this.props.task.due_date,
         subtask:'',
-        subtasks:[]
+        subtasks:[{
+            name:'',
+            completed:''
+        }]
       }      
     }
     componentDidMount() {
@@ -20,6 +23,31 @@ class EditTask extends Component {
     }
     componentWillReceiveProps(){
         this.fetchSubTasks();
+    }
+    updateTask(){
+        const { taskId, taskname, description,priority, start_date, due_date} = this.state;
+        taskRef.child(taskId).update({taskname,description,priority,start_date,due_date});
+    }
+    fetchSubTasks(){
+        const {taskId} = this.state;
+        subTaskRef.on("value", snap => {
+            let Subs = [];
+            snap.forEach(data => {
+                const {task, name, completed} = data.val();
+                if (task === taskId){
+                    Subs.push({name,completed});
+                    this.setState({subtasks:Subs});                       
+                }
+            })
+        });           
+
+    }
+    addSubtask(){
+        const {taskId, subtask} = this.state;
+        subTaskRef.push({task:taskId,completed:false,name:subtask});
+    }
+    completeSubtask(){
+        this.checked = true;
     }
     render(){
         if (this.props.isOpen === false)        
@@ -31,18 +59,18 @@ class EditTask extends Component {
                     <div className="col-sm-6">
                     <div className="form-group">
                         <label>TaskName</label>
-                        <input className="form-control" defaultValue={this.props.task.taskname}
+                        <input className="form-control" value={this.state.taskname}
                         onChange={event => this.setState({taskname:event.target.value})} required />
                     </div>
                     <div className="form-group">
                         <label>Description</label>
-                        <textarea rows="5" className="form-control" defaultValue={this.props.task.description}
+                        <textarea rows="5" className="form-control" value={this.state.description}
                         onChange={event => this.setState({description:event.target.value})} required>
                         </textarea>
                     </div>
                     <div className="form-group">
                         <label>Priority</label>
-                        <select className="form-control" defaultValue= {this.props.task.priority}
+                        <select className="form-control" value={this.state.priority}
                             onChange={event => this.setState({priority:event.target.value})}>
                         <option value="High">High</option>
                         <option value="Medium">Medium</option>
@@ -53,12 +81,12 @@ class EditTask extends Component {
                         <div className="row">
                         <div className="col-sm-6">
                             <label>Start Date</label>
-                            <input type="date" className="form-control" defaultValue= {this.props.task.start_date}
+                            <input type="date" className="form-control" value= {this.state.start_date}
                                 onChange={event => this.setState({start_date:event.target.value})} required/>
                         </div>
                         <div className="col-sm-6">
                             <label>Due Date</label>
-                            <input type="date" className="form-control" defaultValue= {this.props.task.due_date}
+                            <input type="date" className="form-control" value= {this.state.due_date}
                             onChange={event => this.setState({due_date:event.target.value})} required/>
                         </div>
                         </div>
@@ -66,7 +94,8 @@ class EditTask extends Component {
                     </div>
                     <div className = 'col-sm-6'>
                     <div className="form-group">
-                        <button type="submit" className="pull-right btn btn-success"> Save Task</button>
+                        <button type="submit" className="pull-right btn btn-success" onClick={() => this.updateTask()}>
+                            Save Task</button>
                     </div>
                     <br />
                     <div className="form-group">
@@ -84,13 +113,15 @@ class EditTask extends Component {
                         <div className="form-group">
                             <ul className="subtasksList">
                                 {
-                                    this.state.subtasks.map((subtask,index) =>{
+                                    this.state.subtasks.map((sub,index) =>{
                                         return(
                                             <li className="input-group" key={index}>
                                                 <span className = "input-group-addon">
-                                                    <input type="checkbox"/>
+                                                    <input type="checkbox" onChange={() => this.completeSubtask.bind(this)}
+                                                    /> 
                                                 </span>
-                                                <input readOnly value={subtask} className = "form-control" />                                                
+                                                <input readOnly value={sub.name} 
+                                                    className = {sub.completed ? "form-control completed ": "form-control"} />                                                
                                             </li>)
                                     })
                                 }
@@ -104,24 +135,6 @@ class EditTask extends Component {
                 <button id="btn-close" className="btn btn-danger" onClick={e => this.close(e)}>X</button>
             </div>
         )}
-        fetchSubTasks(){
-            const {taskId} = this.state;
-            subTaskRef.on("value", snap => {
-                let Subs = [];
-                snap.forEach(data => {
-                    const {task, subtask} = data.val();
-                    if (task === taskId){
-                        Subs.push(subtask);
-                        this.setState({subtasks:Subs});                       
-                    }
-                })
-            });           
-
-        }
-        addSubtask(){
-            const {taskId, subtask} = this.state;
-            subTaskRef.push({task:taskId, subtask});
-        }
         close(e) {
             e.preventDefault()
 
