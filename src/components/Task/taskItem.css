@@ -107,6 +107,9 @@
 .subtasksList input{
   word-wrap: break-word;
 }
+.subtasksList input.completed{
+  text-decoration: line-through;
+}
 .subtasksList .input-group-addon{
   background: transparent;
 }
