@@ -24,7 +24,7 @@ class Task extends Component{
     deleteTask(){
       const { email } = this.props.user;
       const task = this.props.task;
-      taskRef.child(taskId).remove();
+      taskRef.child(task.id).remove();
       deletedRef.push({email,task})
     }
     render(){
