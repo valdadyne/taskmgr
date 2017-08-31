@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { taskRef, completeTaskRef, subTaskRef } from '../../firebase';
+import { taskRef, completeTaskRef } from '../../firebase';
 import moment from 'moment';
 
 import EditTask from './EditTask';
