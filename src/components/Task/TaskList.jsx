@@ -41,8 +41,8 @@ class TaskList extends Component {
             <i className="ion-ios-plus-outline"></i><br/>Add Task</button></div>
           <div><button id="doneTasks" className="btn btn-custom" onClick={this.handleClick.bind(this)}>
               <i className="ion-ios-checkmark-outline"></i><br/>Completed</button></div>
-          <div><button id="dueTasks" className="btn btn-custom" onClick={this.handleClick.bind(this)}>
-            <i className="ion-ios-information-outline"></i><br/>Past Due</button></div>
+          <div><button id="reports" className="btn btn-custom" onClick={this.handleClick.bind(this)}>
+            <i className="ion-ios-copy-outline"></i><br/>Reports</button></div>
         </aside>
 
         <main>
@@ -75,9 +75,9 @@ class TaskList extends Component {
               </section>
               : null
             }
-            {(this.state.activeComponent === "dueTasks")
+            {(this.state.activeComponent === "reports")
               ? <section>
-                <h4>Past Due Tasks</h4>
+                <h4>Reports</h4>
               </section>
               : null
             }
