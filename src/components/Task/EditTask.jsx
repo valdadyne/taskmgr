@@ -1,22 +1,29 @@
 import React, {Component} from 'react';
-import { taskRef, subTaskRef } from '../../firebase';
+import { subTaskRef } from '../../firebase';
 
 class EditTask extends Component {
     constructor(props){
       super(props);
       this.state ={
+        taskId: '',
         taskname: '',
         description:'',
         priority:'Medium',
         start_date:'',
         due_date:'',
-        subtask:[]
-      }
+        subtask:'',
+        subtasks:[]
+      }      
     }
-
+    componentDidMount() {
+        this.setState({taskId:this.props.task.id});
+    }
+    componentWillReceiveProps(){
+        this.fetchSubTasks();
+    }
     render(){
-      if (this.props.isOpen === false)
-      return null
+        if (this.props.isOpen === false)        
+            return null
         return (
             <div className="overlay fade" >
                 <div className="editWrapper">
@@ -70,27 +77,56 @@ class EditTask extends Component {
                     <div className="form-group subtasks">
                         <label>Subtasks</label>
                         <div className="form-group input-group">
-                        <input type = "text" className ="form-control" />
-                        <span className = "input-group-addon"><a id="newSubtask">+</a></span>
+                        <input type = "text" className ="form-control" value= {this.state.subtask}
+                            onChange={event => this.setState({subtask:event.target.value})} />
+                        <span className = "input-group-addon"><a onClick={()=> this.addSubtask()}>+</a></span>
                         </div>
-                        <select className="form-control"  name="assigned" multiple="multiple" size="5">
-                        </select>
+                        <div className="form-group">
+                            <ul className="subtasks-list">
+                                {
+                                    this.state.subtasks.map((subtask,index) =>{
+                                        return(
+                                            <li className="input-group" key={index}>
+                                                <input readOnly value={subtask} className = "form-control" />
+                                                <span className = "input-group-addon">Done </span>
+                                            </li>)
+                                    })
+                                }
+                            </ul>
+
+                        </div>
                     </div>
                     </div>
                 </form>
                 </div>
                 <button id="btn-close" className="btn btn-danger" onClick={e => this.close(e)}>X</button>
             </div>
-        )
-    }
+        )}
+        fetchSubTasks(){
+            const {taskId} = this.state;
+            subTaskRef.on("value", snap => {
+                let Subs = [];
+                snap.forEach(data => {
+                    const {task, subtask} = data.val();
+                    if (task === taskId){
+                        Subs.push(subtask);
+                        this.setState({subtasks:Subs});                       
+                    }
+                })
+            });           
 
-  close(e) {
-    e.preventDefault()
+        }
+        addSubtask(){
+            const {taskId, subtask} = this.state;
+            subTaskRef.push({task:taskId, subtask});
+        }
+        close(e) {
+            e.preventDefault()
 
-    if (this.props.onClose) {
-      this.props.onClose()
+            if (this.props.onClose) {
+            this.props.onClose()
+            }
+        }
     }
-  }
-}
 
 export default EditTask;
