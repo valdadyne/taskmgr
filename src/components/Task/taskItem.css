@@ -96,3 +96,25 @@
   font-size: 20px;
   cursor: pointer;
 }
+.subtasksList{
+  border:1px solid rgba(83,119,122,0.5);
+  height: 120px;
+  overflow-y: scroll;
+  display: grid;
+  grid-auto-rows: 40px;
+  font-weight: bold;
+}
+.subtasksList input{
+  word-wrap: break-word;
+}
+.subtasksList .input-group-addon{
+  background: transparent;
+}
+.subtasksList .input-group-addon input[type="checkbox"]{
+  width:20px;
+  height:20px;
+  cursor: pointer;
+}
+.subtasksList .form-control{
+  background: transparent;
+}

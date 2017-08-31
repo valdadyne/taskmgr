@@ -82,13 +82,15 @@ class EditTask extends Component {
                         <span className = "input-group-addon"><a onClick={()=> this.addSubtask()}>+</a></span>
                         </div>
                         <div className="form-group">
-                            <ul className="subtasks-list">
+                            <ul className="subtasksList">
                                 {
                                     this.state.subtasks.map((subtask,index) =>{
                                         return(
                                             <li className="input-group" key={index}>
-                                                <input readOnly value={subtask} className = "form-control" />
-                                                <span className = "input-group-addon">Done </span>
+                                                <span className = "input-group-addon">
+                                                    <input type="checkbox"/>
+                                                </span>
+                                                <input readOnly value={subtask} className = "form-control" />                                                
                                             </li>)
                                     })
                                 }
